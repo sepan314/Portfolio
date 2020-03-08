@@ -1,7 +1,14 @@
+/* smooth scrolling, not supported on safari */
+html {
+	scroll-behavior: smooth;
+  }
+
 /* Body */
 body {
 	margin: 0%; /* This ensures our site displays all the way to the edge of the browser screen */
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	letter-spacing: .2vw; 
+	font-size: 1.5vw;
 }
 
 /* Navbar */
@@ -12,6 +19,8 @@ body {
 	top: 0; /* This ensures no space is displayed above the navbar */
 	width: 100%; /* This makes the navbar span the entire width of the page */
 	z-index: 1; /*This ensures other elements don't display over the navbar */
+	-webkit-animation: moveNav 3s; /* Safari 4.0 - 8.0 */
+    animation: moveNav 3s;
 }
 
 /* Navbar text */
@@ -24,7 +33,21 @@ body {
 	font-family: Avant Garde, Helvetica; /* This specifies the font family for text on our navbar */
 	font-size: 20px; /* This specifies the font size for text on our navbar */
 	text-align: center; /* This centers the text within its container */
+	position: relative;
+	letter-spacing: .2vw;
 }
+
+@keyframes moveNav {
+	from {left: -100vw;}
+	to {left: 0vw;}
+  }
+
+  /* fade in video text on load */
+@keyframes fadevideoText {
+		0% {opacity: 0;}
+		100% {opacity: 1;}
+	 
+  }
 
 /* Navbar hover effect */
 .Navbar a:hover {
@@ -38,6 +61,16 @@ body {
   background-color: skyblue;  /* This specifies the background color behind the Home button on the navbar */ 
 }
 
+/* This causes the video to zoom out from a zoomed in position upon page load */
+@keyframes zoominoutsinglefeatured {
+    0% {
+        transform: scale(1.5,1.5);
+    }
+    100% {
+        transform: scale(1,1);
+    }
+}
+
 /* Video */
 #Typing_Video {
 	position: fixed; /* This fixes our video to the page  */
@@ -45,6 +78,7 @@ body {
 	bottom: 0; /* This ensures no space between the edge of the video and the edge of the page */
 	min-width: 100%; /* This ensures the video is displayed across the full width of the page */
 	z-index: -1;
+	animation: zoominoutsinglefeatured 5s;
 }
 
 /* Text over the video */ 
@@ -55,6 +89,9 @@ body {
 	padding: 10px; /* This adds padding around the text so that the background goes slightly beyond the text */
 	margin-top: 23%; /*sets where the "banner" is,  height-wise*/
 	text-align: center;
+	position: relative;
+	-webkit-animation: fadevideoText 4s; /* Safari 4.0 - 8.0 */
+    animation: fadevideoText 4s;
 }
 
 #name {
@@ -84,6 +121,128 @@ body {
 	margin-bottom: 5%;
 }
 
+/* Slideshow Styling */
+#Slideshow_Background {
+	background:rgba(255,255,255, 0.35); /* This creates a slightly transparent white background that's placed over the video */
+	}
+  
+  
+  .mySlides {
+	  display: none;
+  }
+  
+  @-webkit-keyframes fade {
+	from {opacity: .4} 
+	to {opacity: 1}
+  }
+  
+  @keyframes fade {
+	from {opacity: .4} 
+	to {opacity: 1}
+  }
+  
+  /* Slideshow section / container */
+  #Slideshow_Container {
+	width: 39.5vw;
+	height: auto;
+	padding-top: 4%;
+	position: relative;
+	margin: auto;
+  
+  }
+  
+  /* Images contained within slideshow */
+  .Slide_Show_Images {
+	vertical-align: middle;
+	height: auto;
+	box-shadow: 0px 5px 10px 12px rgba(0, 0, 0, .75);
+	width: auto;
+  }
+  
+  
+  /* Next and previous buttons */
+  .Previous, .Next {
+	cursor: pointer;
+	position: absolute;
+	top: 50%;
+	width: auto;
+	padding: 2vw;
+	margin-top: -0vw;
+	color: darkgray;
+	font-weight: bold;
+	font-size: 1.5vw;
+	border-radius: 0 3px 3px 0;
+	user-select: none;
+	transition: 0.6s ease;
+  }
+  
+  /* Positioning the right-hand next button */
+  .Next {
+	right: 0;
+	border-radius: 3px 0 0 3px;
+  }
+  
+  /* Hover effect on slide show buttons */
+  .Previous:hover, .Next:hover {
+	background-color: rgba(0,0,0,0.8);
+	color: white;
+  }
+  
+  /* Slideshow text */
+  .text {
+	color: white;
+	padding: 1vw;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
+	font-family: Perpetua, Rockwell Extra Bold;
+	letter-spacing: .1vw; 
+	font-size: 1.5vw;
+	background-color: rgba(0,0,0,0.75);
+	font-weight: bold;
+	border-radius: 7px 7px 7px 7px;
+  }
+  
+  /* Number text (1/6, 2/6, etc.) - we have set this display to none, which means these are hidden */
+  .Slide_Number {
+	color: white;
+	position: absolute;
+	top: 0;
+	font-family: Perpetua, Rockwell Extra Bold;
+	letter-spacing: .1vw; 
+	font-size: 1.5vw;
+	font-weight: bold;
+	display: none;
+	}
+  
+  /* The dots under the slideshow */
+  .dot {
+	cursor: pointer;
+	height: 1vw;
+	width: 1vw;
+	margin: .25vw;
+	background-color: white;
+	border-radius: 50%;
+	display: inline-block;
+	transition: background-color 0.6s ease;
+	position: relative;
+	z-index: 1;
+  }
+  
+  /* Hover effect for slideshow dots */ 
+  .active, .dot:hover {
+	background-color: black;
+  }
+  
+  /* Fading animation for slideshow */
+  .fade {
+	-webkit-animation-name: fade;
+	-webkit-animation-duration: 1.5s;
+	animation-name: fade;
+	animation-duration: 1.5s;  
+  }
+  
 
 /* Table - this section covers the styling of the columns and rows within our table */
 * { /* The asterisk is a universal selector that applies this effect to all elements on the page */
@@ -134,7 +293,7 @@ body {
 }
 
 /* Heading 1 elements */
-h1 {
+h1, h2 {
 	text-transform: uppercase; /* We are capitalizing our headings */
 	font-family: "Trebuchet MS", Optima; 
 	text-align: center;
@@ -171,60 +330,112 @@ a {
 
 /* Image elements */
 img {
-	filter: grayscale(5%);
+	filter: grayscale(50%);
     border-radius: 20px; /* This causes our images to have slightly rounded edges */
     max-width: 100%; 
-    height: 350px; 
+	height: 350px; 
 	margin-left: auto; /* This in combination with margin-right: auto centers our images */
     margin-right: auto;
 	display: block;	/* By specifying block display we can ensure our images are able to be centered */
 }
 
+
 /* Contact form */
-input[type=text] { /* This covers the input sections of the contact form */
+
+/* Makes contact form button slide in from right on page load */
+@keyframes movePopup {
+	from {right: -40vw;}
+	to {bottom: 1.75vw;}
+  }
+
+/* Button used to open the contact form - fixed at the bottom of the page */
+.pop_up {
+bottom: 1.75vw;
+right: 1.75vw;
+width: 20vw;  
+background-color: white;
+color: black;
+border: solid;
+cursor: pointer;
+position: fixed;
+-webkit-animation: movePopup 3s;
+animation: movePopup 3s;
+}
+
+  /* The popup form - hidden by default */
+.form-popup {
+	border: 3px solid #f0f1f0;
+	z-index: 8;
+	display: none;
+	position: fixed;
+	bottom: 6px;
+	right: 6px;
+}
+
+/* Form styling */
+.form-container {
+	max-width: 40vw;
+	padding: 10px;
+	background-color: white;
+  }
+
+.form-container input[type=text] { /* This covers the input sections of the contact form */
 	width: 100%;
-	padding: 12px;
-    border: 1px solid #ccc; /* We are setting a solid border and its colors */
-    border-radius: 4px; 
-    box-sizing: border-box;
-    margin-top: 6px;
-    margin-bottom: 12px;
-    resize: vertical; /* This specifies how an element is resized; vertical allows the user to resize the height of the element */
-    font-family: Perpetua, Rockwell Extra Bold; 
+	padding: 0.93vw;
+    border: none;
+    border-radius: 10px; 
+    background: gainsboro;
+    margin: .6vw 0 .6vw 0;
+	font-family: Perpetua, Rockwell Extra Bold; 
+	font-size:  1vw;
 }
 
-/* Submit button */
-input[type=submit] { /* This covers the submit button for the contact form */
-	background-color: black;
+.form-container .btn {
+	width: 49%;
+	background-color: white;
+	color: rgb(100, 100, 100);
+	border-color: black;
+	margin-bottom:1vh;
+  }
+
+
+/* Close button */
+.form-container .cancel {
+	background-color: rgb(51, 51, 51);
 	color: white;
+	border-color: gray;
+  }
+
+/* Button styling */
+button {
+	font-family: "Trebuchet MS", Optima; 
+	letter-spacing: .3vw; 
+	font-size: 1.5vw;
 	font-weight: bold;
-	padding: 10px 20px;
-	border: none;
-	border-radius: 10px;
+	padding: 1.5vw 1.5vw;
+	border-style: solid;
 	cursor: pointer;
-	display: block;
-	margin-left: auto;
-	margin-right: auto; 
-	font-family: Perpetua, Rockwell Extra Bold;
-	font-size: 1rem;
-}
+	width: 100%;
+	height: auto;
+  }
 
-/* Hover effect for submit button */
-input[type=submit]:hover {
-	background-color: lightgrey; /* Makes the background turn white when hovered over */
-	color: black; /* Makes the font turn black when hovered over */
-	font-weight: bold; /* Makes the font bold when hovered over */
-	/* transform: scale(1.5); Makes the button increase 1.5 times in size */ 
-	/* transition: transform 1.5s;  Makes the transform effect last 1.5 seconds from start to finish */
-}
-
-/* Form elememt */
-form { 
-	border-radius: 5px; 
-	background-color: #f2f2f2;
-	padding: 15px;
-	font-family: "Trebuchet MS", Optima;
-}
+/* Hover effect for buttons */
+.form-container .btn:hover{
+	color: white;
+	background-color: rgb(31, 31, 31);
+	-webkit-transition-duration: .5s; 
+	transition-duration: .5s;
+	border-style: solid;
+	border-color: silver;
+  }
+.form-container .cancel:hover, button:hover{
+	color: white;
+	background-color: rgba(139, 0, 0, 0.75);
+	-webkit-transition-duration: 0.5s; 
+	transition-duration: 0.5s;
+	border-style: solid;
+	border-color: black;
+}	
 
 /* Center align element hover effect */
 /* center:hover {
@@ -242,16 +453,16 @@ h1:hover {
 	color: black;
 	font-weight: normal; /* Makes the text no longer bold when hovered over */ 
 }
-.Column_1:hover, .Column_2:hover, .Column_3:hover{
+.Column_1:hover, .Column_2:hover, .Column_3	:hover{
 	border: 2px solid #333;
 }
 
 /* Image element hover effects */
-/* img:hover {
+img:hover {
 	filter: grayscale(5%);
-    transition: transform 1s;
-	transform: scale(1.1);
-} */
+    /* transition: transform 1s;
+	transform: scale(1.1); */
+}
 
 /* Footer element */
 footer {

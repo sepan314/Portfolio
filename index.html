@@ -5,101 +5,175 @@
 	<head>
 		<meta charset="UTF-8">
 		<title> Serena Pan </title>
-		<link rel="stylesheet" type="text/css" href="./portfolio_style.css">
+		<link rel="stylesheet" type="text/css" href="./css/portfolio_style.css">
+
 	</head>
 
-<!-- Body -->
-<body class="Background"> 
+	<!-- Body -->
+	<body class="Background"> 
 
-<!-- Navbar -->
-	<div class="Navbar">
-		<a class="active" href="#Home">Home</a> 
-		<a href="#About">About</a>
-		<a href="#GitHub">GitHub</a>
-		<a href="#Contact">Contact</a>
-	</div>
-
-<!-- Home -->
-		<br> <!-- Breaks inserted to add space between navbar and first heading -->
-		<br>
-
-<!-- Video -->
-	<div id="Home">
-		<video autoplay muted loop id="Typing_Video"> <!-- Makes the video play automatically, on a loop and with no sound -->
-			<source src="./videos/Typing.mp4" type="video/mp4">
-			Your browser does not support HTML5 video. <!-- Display message if video fails to run -->
-		</video>
-	</div>
-
-<!-- Video text --> 
-	<div class="Video_Text"> 
-		<h6 id="name">Serena Pan</h6>
-		<h6 id="subheading">Portfolio</h6>
-		<h6 id="email_add">serenaconsulting2020@gmail.com</h6>
-	</div>
-
-<!-- About section -->
-	<div class="Row" id="About"> 
-		<div class="Column_2"> <!-- Left column -->
-			<img src="./img/headshot_long.jpeg" alt="Headshot">
-		</div>
-  
-		<div class="Column_1"> <!-- Right column -->
-			<h1>About</h1>
-				<p> 
-					My name is Serena Pan, and I am a software developer. I have a BS in mechanical engineering,
-					but then discovered my passion for coding. <br><br>
-
-					I am a graduate of The Tech Academy’s Software Developer Boot Camp, and trained and 
-					experienced in the following web and programming languages: HTML, CSS, JavaScript, 
-					SQL, C# and more. <br><br>
-
-					Currently looking to start my career in web development. Contact me at 
-					serenaconsulting2020@gmail.com or use the form <a href="#Contact">below.</a>
-				</p>
+	<!-- Navbar -->
+		<div class="Navbar">
+			<a class="active" href="#Home">Home</a> 
+			<a href="#Slideshow">Slideshow</a>
+			<a href="#About">About</a>
+			<a href="#GitHub">GitHub</a>
+			<a onclick="open_form()">Contact</a>
 		</div>
 
-	</div>
+		<!-- close contact form when focus is not on it -->
+	<div class="btn cancel" onclick="close_form()">
 
-<!-- GitHub section -->
-	<div class="Row" id="GitHub">
-		<div class="Column_1" > <!-- Left column -->
-			<h1 id="github_link" ><a href="https://github.com/sepan314" target="_blank">MY GITHUB</a></h1>
+		<br><br>
+
+	<!-- Home/Video -->
+		<div id="Home">
+			<video autoplay muted loop id="Typing_Video"> <!-- autoplay video muted and on loop -->
+				<source src="./videos/Typing.mp4" type="video/mp4">
+				Your browser does not support HTML5 video. <!-- alt msg -->
+			</video>
 		</div>
+
+	<!-- Video text --> 
+		<div class="Video_Text"> 
+			<h6 id="name">Serena Pan</h6>
+			<h6 id="subheading">Portfolio</h6>
+			<h6 id="email_add">serenaconsulting2020@gmail.com</h6>
+		</div>
+
+		<!-- Slideshow section -->
+		<div id="Slideshow">
+			<div id="Slideshow_Background"> 
+			  <div id="Slideshow_Container">
+				
+				<div class="mySlides fade">
+				  <div class="Slide_Number">1 / 6</div>
+					<img class="Slide_Show_Images" src="./img/headshot_long.jpeg" style="width:95%;height:39.5vw">
+					  <div class="text">I'm available to assist you on your project!</div>
+				</div>
+				
+				<div class="mySlides fade">
+				  <div class="Slide_Number">2 / 6</div>
+					<img class="Slide_Show_Images" src="./img/HTML_CSS_and_JavaScript.jpeg" style="width:100%">
+					  <div class="text">I am a full-stack software developer,<br> trained in:<br>HTML, CSS, JavaScript,</div>
+				</div>
 		
-		<div class="Column_2"> <!-- Right column -->
-			<a href="https://github.com/sepan314" target="_blank">
-				<img src="./img/GitHub.png" alt="GitHub"></a>
+				<div class="mySlides fade">
+				  <div class="Slide_Number">3 / 6</div>
+					<img class="Slide_Show_Images" src="./img/Python.png" style="width:100%">
+					  <div class="text">the popular programming language Python,</div>
+				</div>
+		
+				<div class="mySlides fade">
+				  <div class="Slide_Number">4 / 6</div>
+					<img class="Slide_Show_Images" src="./img/C_Sharp_and_Dot_NET.png" style="width:100%">
+					  <div class="text">C#, .NET Framework, ASP.NET, MVC,</div>
+				</div>
+		
+				<div class="mySlides fade">
+				  <div class="Slide_Number">5 / 6</div>
+					<img class="Slide_Show_Images" src="./img/SQL_and_Database.jpg" style="width:100%">
+					  <div class="text">back end development, databases and SQL.</div>
+					</div>
+		
+				<div class="mySlides fade">
+				  <div class="Slide_Number">6 / 6</div>
+					<img class="Slide_Show_Images" src="./img/code.jpg" style="width:100%;height:39.5vw">
+					  <div class="text"> 
+						<a onclick="openForm()" href="#Contact" style="color:white;">Contact me now!</a>
+					  </div>
+				</div>
+			
+				<a class="Previous" onclick="plusSlides(-1)">&#10094;</a>
+				<a class="Next" onclick="plusSlides(1)">&#10095;</a>
+				
+			  </div>
+		  <br>
+		
+			  <div style="text-align:center">
+		 
+				<span class="dot" onclick="currentSlide(1)"></span> 
+				<span class="dot" onclick="currentSlide(2)"></span> 
+				<span class="dot" onclick="currentSlide(3)"></span> 
+				<span class="dot" onclick="currentSlide(4)"></span> 
+				<span class="dot" onclick="currentSlide(5)"></span> 
+				<span class="dot" onclick="currentSlide(6)"></span> 
+		
+			  </div>
+			</div>
+		  </div>
+
+
+	<!-- About section -->
+		<div class="Row" id="About"> 
+			<div class="Column_2"> <!-- Left column -->
+				<img src="./img/Development.jpg" alt="Code">
+			</div>
+	
+			<div class="Column_1"> <!-- Right column -->
+				<h1>About</h1>
+					<p> 
+						My name is Serena Pan, and I am a software developer. I have a BS in mechanical engineering,
+						but then discovered my passion for coding. <br><br>
+
+						I am a graduate of The Tech Academy’s Software Developer Boot Camp, and trained and 
+						experienced in the following web and programming languages: HTML, CSS, JavaScript, 
+						SQL, C# and more. <br><br>
+
+						Currently looking to start my career in web development. Contact me at 
+						serenaconsulting2020@gmail.com or use the form <a href="#Contact">below.</a>
+					</p>
+			</div>
+
+		</div>
+
+	<!-- GitHub section -->
+		<div class="Row" id="GitHub">
+			<div class="Column_1" > <!-- Left column -->
+				<h1 id="github_link" ><a href="https://github.com/sepan314" target="_blank">MY GITHUB</a></h1>
+			</div>
+			
+			<div class="Column_2"> <!-- Right column -->
+				<a href="https://github.com/sepan314" target="_blank">
+					<img src="./img/GitHub.png" alt="GitHub"></a>
+			</div>
 		</div>
 	</div>
 
-<!-- Contact section -->
-	<div class="Row" id="Contact"> 
-		<div class="Column_3"> <!-- Contact image, left column -->
-			<img src="./img/IMG_2388.jpeg" alt="Boston">
+
+	<!-- Contact section -->
+		<div id="Contact"> 
+			<button onclick="open_form()" class="pop_up">CONTACT</button>
+			<div class="form-popup" id="contact_form">
+					<form action="https://formspree.io/mwkbjqyr" method="POST" class="form-container">
+						<h2>CONTACT</h2>
+						<label>Name:</label>
+							<input type="text" placeholder="Please enter your name here" name="name" required>
+						<label>Email:</label>
+							<input type="text" name="email" placeholder="Please enter your email here" required>
+						<label>Phone:</label>
+							<input type="text" placeholder="Please enter your phone number here" name="phone">
+						<label>Message:</label>
+							<input type="text" name="message" placeholder="Please write your message here">
+
+						<button type="submit" class="btn"> SUBMIT</button>
+						<button type="button" class="btn cancel" onclick="close_form()"> CLOSE</button>
+					</form>
+			</div>
 		</div>
-	
-		<div class="Column_1"> <!-- Contact form, right "column" -->
-			<h1>Contact</h1> 
-				<form action="" method="get"> <!-- This specifies where to send the form data and how; it is left blank -->
-					<label>Name:</label>
-						<input type="text" placeholder="Please enter your name here">
-					<label>Email:</label>
-						<input type="text" id="Email" name="Email" placeholder="Please enter your email here">
-					<label>Message:</label>
-						<input type="text" id="Message" name="Message" placeholder="Please write your message here">
-						<input type="submit" value="Submit">
-				</form>
-		</div>
-	</div>
 	
 <!-- Footer section -->
-	<footer>
-		<p>
-			<center>&copy; Serena Pan 2020  <a href="https://learncodinganywhere.com/">The Tech Academy</a></center><br>
-		</p>
-	</footer>
+		<footer>
+			<p>
+				<center>&copy; Serena Pan 2020  <a href="https://www.sepan.dev">Website</a></center><br>
+			</p>
+		</footer>
 
-		</body>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="./js/portfolio.js"></script>
+
+
+	</body>
 
 </html>
